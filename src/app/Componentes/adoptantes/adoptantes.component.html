@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listado de adoptantes</title>
+  </head>
+  <body>
+    <header class="header-align">
+      <div class="logo">Patitas en Cuidado</div>
+      <nav class="nav-center">
+        <ul>
+          <li><a href="#">Inicio</a></li>
+        </ul>
+      </nav>
+      <button class="logout-btn">Cerrar Sesión</button>
+    </header>
+    <br />
+    <div class="container">
+      <h1>Listado de adoptantes</h1>
+      <div class="btn-container">
+        <button class="btn btn-primary" onclick="addVacuna()">
+          Agregar adoptante
+        </button>
+        <button class="btn btn-secondary" onclick="generateExcel()">
+          Generar Excel
+        </button>
+        <button class="btn btn-danger" onclick="generatePDF()">
+          Generar PDF
+        </button>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre Adoptante</th>
+              <th>Numero Documento</th>
+              <th>Numero Contacto</th>
+              <th>Numero Emergencia</th>
+              <th>Imagen</th>
+              <th>Direccion de Residencia</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let adoptante of adoptantes">
+              <td>{{ adoptante.id }}</td>
+              <td>{{ adoptante.nombreAdoptante }}</td>
+              <td>{{ adoptante.numeroDocumento }}</td>
+              <td>{{ adoptante.numeroContacto }}</td>
+              <td>{{ adoptante.numeroEmergencia  }}</td>
+              <td>{{ adoptante.imagen  }}</td>
+              <td>{{ adoptante.direccionResidencia  }}</td>
+              <td>
+                <button
+                  class="btn btn-primary btn-sm"
+                  onclick="editVacuna(adoptante.id)"
+                >
+                  Editar
+                </button>
+                <button
+                  class="btn btn-danger btn-sm"
+                  onclick="deleteVacuna(adoptante.id)"
+                >
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

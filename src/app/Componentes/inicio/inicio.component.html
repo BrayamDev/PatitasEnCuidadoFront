@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sistema de Registro de Animales</title>
+  </head>
+  <body>
+    <header class="header-align">
+      <div class="logo">Patitas en Cuidado</div>
+      <nav class="nav-center">
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Animales Registrados</a></li>
+          <li class="dropdown">
+            <a href="#">Administración</a>
+            <div class="dropdown-content">
+              <a href="/vacunas">Lista de Vacunas</a>
+              <a href="/fundaciones">Lista de Fundaciones</a>
+              <a href="/adoptantes">Lista de Adoptantes</a>
+              <a href="/tipo_animal">Lista Tipo Animal</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+      <button class="logout-btn">Cerrar Sesión</button>
+    </header>
+
+    <div class="card">
+      <div class="form-container1">
+        <form action="#" method="POST" enctype="multipart/form-data">
+          <h2>Registrar Animal</h2>
+          <div class="form-row three-columns">
+            <div class="form-group">
+              <label for="nombreAnimal">Nombre del Animal</label>
+              <input
+                type="text"
+                id="nombreAnimal"
+                name="nombreAnimal"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="imagen">Subir Imagen</label>
+              <input type="file" id="imagen" name="imagen" accept="image/*" />
+            </div>
+
+            <div class="form-group">
+              <label for="fechaIngreso">Fecha de Ingreso</label>
+              <input
+                type="date"
+                id="fechaIngreso"
+                name="fechaIngreso"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="estadoSalud">Estado de Salud</label>
+              <select id="estadoSalud" name="estadoSalud" required>
+                <option value="saludable">Saludable</option>
+                <option value="enfermo">Enfermo</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="procedencia">Procedencia</label>
+              <input type="text" id="procedencia" name="procedencia" required />
+            </div>
+
+            <div class="form-group">
+              <label for="edad">Edad (años)</label>
+              <input type="number" id="edad" name="edad" required />
+            </div>
+
+            <div class="form-group">
+              <label for="raza">Raza</label>
+              <input type="text" id="raza" name="raza" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="idVacunasId">Adoptantes</label>
+              <select id="idVacunasId" name="idVacunasId" required>
+                <option disabled selected>--Seleccione adoptantes--</option>
+                <option *ngFor="let adoptante of adoptantes" [value]="adoptante.id">
+                  {{ adoptante.nombreAdoptante }}
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="idVacunasId">Vacunas</label>
+              <select id="idVacunasId" name="idVacunasId" required>
+                <option disabled selected>--Seleccione vacunas--</option>
+                <option *ngFor="let vacuna of data" [value]="vacuna.id">
+                  {{ vacuna.nombreVacuna }}
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="idTipoVacunasId">Tipo Animal</label>
+              <select id="idTipoVacunasId" name="idTipoVacunasId" required>
+                <option disabled selected>--Seleccione tipo animal--</option>
+                <option *ngFor="let tipoanimal of tipoAnimales" [value]="tipoanimal.id">
+                  {{ tipoanimal.nombreTipoAnimal }}
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="idFundacion">Fundación</label>
+              <select id="idFundacion" name="idFundacion" required>
+                <option disabled selected>--Seleccione Fundacion--</option>
+                <option *ngFor="let fundacion of fundaciones" [value]="fundacion.id">
+                  {{ fundacion.nombreFundacion }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Observaciones al final y ocupando las 4 columnas -->
+          <div class="form-row full-width">
+            <div class="form-group">
+              <label for="observaciones">Observaciones</label>
+              <textarea
+                id="observaciones"
+                name="observaciones"
+                rows="4"
+                required
+              ></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn">Registrar Animal</button>
+        </form>
+      </div>
+
+      <div class="form-container">
+        <div class="buttons-container">
+          <button class="add-btn">Generar Reportes</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

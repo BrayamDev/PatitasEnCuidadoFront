@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Listado de Vacunas</title>
+  </head>
+  <body>
+    <header class="header-align">
+      <div class="logo">Patitas en Cuidado</div>
+      <nav class="nav-center">
+        <ul>
+          <li><a href="#">Inicio</a></li>
+        </ul>
+      </nav>
+      <button class="logout-btn">Cerrar Sesión</button>
+    </header>
+    <br>
+    <div class="container">
+      <h1>Listado de Vacunas</h1>
+      <div class="btn-container">
+        <button class="btn btn-primary" onclick="addVacuna()">
+          Agregar Vacuna
+        </button>
+        <button class="btn btn-secondary" onclick="generateExcel()">
+          Generar Excel
+        </button>
+        <button class="btn btn-danger" onclick="generatePDF()">
+          Generar PDF
+        </button>
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Fecha Caducidad</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let vacuna of data">
+              <td>{{ vacuna.id }}</td>
+              <td>{{ vacuna.nombreVacuna }}</td>
+              <td>{{ vacuna.fechaCaducidad | date:'shortDate' }}</td>
+
+              <td>
+                <button class="btn btn-primary btn-sm" onclick="editVacuna(vacuna.id)">
+                  Editar
+                </button>
+                <button class="btn btn-danger btn-sm" onclick="deleteVacuna(vacuna.id)">
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
